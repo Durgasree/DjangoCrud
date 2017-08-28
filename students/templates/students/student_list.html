@@ -1,0 +1,33 @@
+<h1>Student CRUD Operations</h1>
+
+<hr>
+
+<h3>Students List</h3>
+
+
+
+<table class="table table-bordered" style="margin: 30px; padding: 20px;" border="5"> 
+	<tr>
+		<th>#</th>
+		<th>Class</th>
+		<th>Name</th>
+		<th>Phone</th>
+		<th>Address</th>
+		<th> Actions</th>
+	</tr>
+
+	{% for student in object_list %}
+		<tr style="margin: 30px; padding: 20px;">
+			<td style="margin: 30px; padding: 20px;">{{student.id}}</td>
+			<td style="margin: 30px; padding: 20px;">(Class {{student.class_name}})</td>
+			<td style="margin: 30px; padding: 20px;">{{ student.name }}</td>
+			<td style="margin: 30px; padding: 20px;">{{ student.phone }}  </td>
+			<td style="margin: 30px; padding: 20px;">{{ student.address }} </td>
+			<td style="margin: 30px; padding: 20px;"> 
+				<a href="{% url 'students:student_edit' student.id%}"> Edit </a>  | 
+				<a href="{% url 'students:student_delete' student.id %}"> Delete</a>
+			</td>
+		</tr>
+	{% endfor %}
+</table>
+<a href="{% url 'students:student_new' %}"> Add New Student </a> 
